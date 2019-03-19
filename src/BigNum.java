@@ -5,14 +5,14 @@ public class BigNum {
     private Scanner kb = new Scanner(System.in);
     private ArrayList<Integer> arr1 = new ArrayList<>();
     private ArrayList<Integer> arr2 = new ArrayList<>();
-    private String num1 = "999999";
-    private String num2 = "111111";
+    private String num1 = "";
+    private String num2 = "";
 
     public void init(){
-//        System.out.println("First Num: ");
-//        num1 = kb.nextLine();
-//        System.out.println("Second Num: ");
-//        num2 = kb.nextLine();
+        System.out.println("First Num: ");
+        num1 = kb.nextLine();
+        System.out.println("Second Num: ");
+        num2 = kb.nextLine();
 
         for (int i = 0; i < num1.length(); i++){
             arr1.add(Integer.parseInt(num1.substring(i, i+1)));
@@ -35,17 +35,21 @@ public class BigNum {
 
         System.out.println(arr1);
         System.out.println(arr2);
-//        System.out.println("Add or Subtract: (A / S): ");
-//        if (kb.nextLine().equals("A")){
-//            add();
-//        }
-//        else if (kb.nextLine().equals("S")){
-//            subtract();
-//        }
+       System.out.println("Add or Subtract: (A / S): ");
+       String temp = kb.nextLine();
+       if (temp.equals("A")){
+           System.out.println(add());
+       }
+       else if (temp.equals("S")){
+           System.out.println(subtract());
+       }
+       else {
+         System.exit(0);
+       }
 
     }
 
-    public void add(){
+    public ArrayList<Integer> add(){
 
         ArrayList<Integer> answer = new ArrayList<>();
 
@@ -65,23 +69,21 @@ public class BigNum {
                 answer.add(0, sum);
             }
         }
-
-        System.out.println(answer);
+        return answer;
     }
 
-    public void subtract(){
+    public ArrayList<Integer> subtract(){
         ArrayList<Integer> answer = new ArrayList<>();
-
-        //first figure which number is bigger
         for (int i = arr1.size() - 1; i >= 0; i--){
             int n1 = arr1.get(i);
             int n2 = arr2.get(i);
-            int difference = n1 - n2;
-            answer.add(0, difference);
+            if (n1 < n2){
+                arr1.set(i-1, arr1.get(i - 1) - 1);
+                arr1.set(i, arr1.get(i) + 10);
+                n1 = arr1.get(i);
+            }
+            answer.add(0, n1 - n2);
         }
-
-
-
-       System.out.println(answer);
+       return answer;
     }
 }
