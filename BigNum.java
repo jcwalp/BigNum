@@ -82,13 +82,16 @@ public class BigNum {
 
     public ArrayList<Integer> multiply(){
       ArrayList<Integer> answer = new ArrayList<>();
-      int result = 0;
       for (int i = 0; i < arr1.size(); i++){
-        for (int j = 0; j < arr2.size(); i++){
-          result += (arr1.get(i)) * (arr2.get(j)) * (int) Math.pow(10, arr1.size() + arr2.size() - (i + j + 2));
+        for (int j = 0; j < arr2.size(); j++){
+          answer.add((arr1.get(i)) * (arr2.get(j)) * (int) Math.pow(10, arr1.size() + arr2.size() - (i + j + 2)));
         }
       }
-      answer.add(result);
+      int sum = 0;
+      for (int i = 0; i < answer.size(); i++){
+          sum += answer.get(i);
+      }
+      System.out.println(sum);
       return answer;
     }
 }
