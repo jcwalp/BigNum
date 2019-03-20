@@ -29,8 +29,8 @@ public class BigNum {
         }
         System.out.println(arr1);
         System.out.println(arr2);
-       System.out.println("Add or Subtract: (A / S): ");
-       String temp = kb.nextLine();
+       System.out.println("Add or Subtract or Multiply: (A / S / M): ");
+       String temp = kb.nextLine().toUpperCase();
        if (temp.equals("A")){
            System.out.println(add());
        }
