@@ -86,4 +86,21 @@ public class BigNum {
         }
        return answer;
     }
+
+
+    public ArrayList<Integer> multiply(){
+      ArrayList<Integer> answer = new ArrayList<>();
+
+      for (int i = arr2.size() - 1; i >= 0; i--){
+        for (int j = arr2.size() - 1; i >= 0; i--){
+          int n1 = arr2.get(i);
+          int n2 = arr1.get(j);
+          int product = n1 * n2;
+          if (product > 10){
+            answer.add(0, product % 10);
+            arr1.set(i-1, arr1.get(i-1) + product / 10);
+          }
+        }
+      }
+    }
 }
